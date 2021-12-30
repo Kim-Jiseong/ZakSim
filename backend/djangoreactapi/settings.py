@@ -30,6 +30,9 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# django sites app setting
+SITE_ID = 1
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,8 +40,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'post',
+    'django.contrib.sites', # regisetration
+    
+    # DRF
     'rest_framework',
+    'rest_framework.authtoken',
+
+    # rest_auth + allauth
+    'rest_auth',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
+
+    # My apps
+    'accounts',
+    'post',
+
     'corsheaders',
 ]
 REST_FRAMEWORK = {
@@ -135,3 +152,10 @@ CORS_ORIGIN_WHITELIST = (
     'http://127.0.0.1:3000',
     # 'localhost:3000/'
 )
+
+# DRF auth settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
