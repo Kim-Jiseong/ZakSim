@@ -34,7 +34,7 @@ function Login() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const loginInfo = { id: e.target.id.value, pwd: e.target.pwd.value };
+    const loginInfo = { "username": e.target.id.value, "password": e.target.pwd.value };
     return login(loginInfo);
   };
 
