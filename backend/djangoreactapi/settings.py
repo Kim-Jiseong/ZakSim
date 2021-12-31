@@ -159,3 +159,4 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ]
 }
+CORS_ALLOW_CREDENTIALS = True

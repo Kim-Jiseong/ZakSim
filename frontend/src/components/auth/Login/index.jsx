@@ -26,6 +26,8 @@ function Login() {
           alert("아이디 혹은 패스워드가 잘못되었습니다.");
           setError("아이디 혹은 패스워드가 잘못되었습니다.");
         }
+        console.dir(err)
+        console.log(loginInfo)
       });
   };
 
