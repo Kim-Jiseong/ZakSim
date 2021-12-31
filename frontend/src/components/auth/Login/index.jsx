@@ -51,7 +51,7 @@ function Login() {
   useEffect(() => {
     if(user != "none"){
       history({
-        pathname: "/"
+        pathname: "/main"
       })
     }
   }, [user])

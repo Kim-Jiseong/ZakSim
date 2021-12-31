@@ -33,9 +33,9 @@ function Splash() {
 
           {/* <Link  style={{color: 'inherit', textDecoration: 'none' }} to="auth/signup"><S.Button2 style={{width: '270px'}}>회원가입</S.Button2></Link> */}
           
-          {/* <S.Button1 onClick={logout} type="button">
+          <S.Button1 onClick={logout} type="button">
               Log Out
-          </S.Button1> */}
+          </S.Button1>
           <img style={{width: "100%", position: "absolute", bottom: "0", maxWidth:"375px"}}src={footerbg}/>
       </T.Container>
 

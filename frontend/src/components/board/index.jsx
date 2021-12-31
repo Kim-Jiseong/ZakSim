@@ -1,24 +1,34 @@
-// import React, {useEffect, useState} from "react";
-// import { useNavigate ,useLocation, useParams } from "react-router-dom";
-// import axios from "axios";
-// import * as S from "./style";
+import React, {useEffect, useState} from "react";
+import { useNavigate ,useLocation, useParams } from "react-router-dom";
+import axios from "axios";
+import * as S from "./style";
+import { useRecoilState , useRecoilValue } from "recoil";
+import { userState, profileState } from "../../atoms/atoms.js";
 
-
-// function Board() {
-//     const [posts, setPosts] = useState([]);
-//     const history = useNavigate();
-//     const [isLoading, setIsLoading] = useState(true);
-
-//     const getPosts = async () =>  { await axios.get(config.BASE_URL + "/api/posts/lectures/" + courseId)
-//       .then((res)=> {
-//            setPosts(res.data.data);
-//         })
-//     }
-
-//     useEffect(async() => {
-//         await getPosts();
-//         setIsLoading(false);
-//     }, []);
+function Board() {
+    const [posts, setPosts] = useState();
+    const history = useNavigate();
+    const [isLoading, setIsLoading] = useState(true);
+    // const user = useRecoilValue(profileState);
+    // console.log(user)
+    // const getUser = async () =>  {
+    // await axios.get(`http://localhost:8000/accounts`)
+    //   .then((res)=> {
+    //        console.log(res.data)
+    //        setPosts(res.data);
+    //     })
+    // }
+    const getPosts = async () =>  {
+    await axios.get(`http://localhost:8000/api`)
+      .then((res)=> {
+           console.log(res.data)
+           setPosts(res.data);
+        })
+    }
+    useEffect(async() => {
+        await getPosts();
+        setIsLoading(false);
+    }, []);
 
 //     const titleWrapper = {
 //         display: 'flex',
@@ -49,43 +59,47 @@
 //         return `${Math.floor(betweenTimeDay / 365)}년전`;
 //     }
     
-//     if(isLoading){
-//         return <div>로딩중...</div>
-//     }
+    if(isLoading){
+        return <div>로딩중...</div>
+    }
 
-//     return (
-//     <>
-//         <div style={titleWrapper}>
-//             <S.Title>{lecture.name}</S.Title>
-//             <div style={{fontSize: "0.875rem",color: '#A7B0C0', }}>{lecture.professor}</div>
-//         </div>
-//             {posts && posts.map(data => {
-//                 return (
-//                 <div style={{width:"88%" ,margin: "0 auto",display:"flex",justifyContent:"center",flexDirection: "column"}}>
-//                 <S.PostWrapper onClick={() => history.push({
-//                     pathname: `/board/${courseId}/${data.pk}`,
-//                 })}>
-//                     <S.PostTitle>{data.title}</S.PostTitle>
-//                     <S.PostContent>{data.content}</S.PostContent>
-//                     <div style={{width:"88%" ,margin: "0 auto",display:"flex",justifyContent:"space-between",}}>
-//                         <S.PostTime>{timeForToday(data.createdAt)}</S.PostTime>
-//                     </div>
-//                 </S.PostWrapper>
-//                 </div>
-//                 );
-//             })}
-//         <S.YB/>
-//         <S.FixedAlign>
-//         <S.PlusButton onClick={() => history.push({
-//             pathname: `/board/${courseId}/write`,
-//             state: {
-//                 lecturePk:lecture.pk
-//             }
-//         })}>
-//             <i className="fas fa-plus"></i>
-//           </S.PlusButton>
-//         </S.FixedAlign>
-//     </>
-//     );
-// }
-//     export default Board;
+    return (
+    <>
+        <div>
+            <S.Title>제목</S.Title>
+            <div style={{fontSize: "0.875rem",color: '#A7B0C0', }}></div>
+    </div>
+    <S.DesignContainer>
+            {posts && posts.map(data => {
+                return (
+                <div style={{ width:"88%" ,margin: "0 auto",display:"flex",justifyContent:"center",flexDirection: "column"}}>
+                <S.PostWrapper 
+                // onClick={() => history({pathname: `/board/${courseId}/${data.pk}`,})}
+                >
+                    <S.PostTitle>{data.title}</S.PostTitle>
+                    <S.PostContent>{data.content}</S.PostContent>
+                    {/* <S.PostContent>{data.success}</S.PostContent> */}
+                    <div style={{width:"88%" ,margin: "0 auto",display:"flex",justifyContent:"space-between",}}>
+                        <S.PostTime>{data.created_at}</S.PostTime>
+                    </div>
+                </S.PostWrapper>
+                </div>
+                );
+            })}
+    </S.DesignContainer>
+        <S.YB/>
+        {/*
+        <S.FixedAlign>
+        <S.PlusButton onClick={() => history.push({
+            pathname: `/board/${courseId}/write`,
+            state: {
+                lecturePk:lecture.pk
+            }
+        })}>
+            <i className="fas fa-plus"></i>
+          </S.PlusButton>
+        </S.FixedAlign> */}
+    </>
+    );
+}
+export default Board;

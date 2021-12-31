@@ -14,6 +14,7 @@ function Router() {
             <Route path="/auth/signup"  element={<Signup/>}/>
             <Route path="/auth/login"  element={<Login/>}/>
             <Route path="/" element={<Splash/>}/>
+            <Route path="/main" element={<Home/>}/>
           </Routes>
       );
   
@@ -22,6 +23,7 @@ function Router() {
       <Route path="/auth/signup"  element={<Signup/>}/>
       <Route path="/auth/login"  element={<Login/>}/>
       <Route path="/" element={<Splash/>}/>
+      <Route path="/main" element={<Home/>}/>
     </Routes>
         
   );
