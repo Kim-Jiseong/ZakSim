@@ -16,8 +16,12 @@ export const InputIcon = styled.i`
 export const YB = styled.div`
   height: 200px
 `
-export const Title = styled.h1`
+export const Title = styled.p`
   margin-bottom: 50px;
+  // font-family: 'Spoqa Hans Sans Neo',sans-serif;
+  font-family: nanum-myeongjo, sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
 `
 export const SubTitle = styled.div`
   width: 88%;
@@ -40,10 +44,10 @@ export const Container = styled.div`
 
 `
 export const Circle = styled.div`
-  width: 44px;
+  width: 12px;
   height: 44px;
   margin-top: 10px;
-  background-color: #eee;
+  // background-color: #fff;
   display:flex;
   cursor:pointer;
   align-items: center;
@@ -53,7 +57,6 @@ export const Circle = styled.div`
 export const InputWrapper = styled.div`
   width: 100%;
   height: 56px;
-  border-bottom: 1px solid #eee;
   display:flex;
   justify-content: center;
   align-items: center;
@@ -65,6 +68,8 @@ export const ButtonWrapper = styled.div`
   width: 100%;
   display:flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `
 export const InputID = styled.input`
   width: 100%;
@@ -72,7 +77,9 @@ export const InputID = styled.input`
   height: 100%;
   font-family: 'Spoqa Han Sans Neo', 'sans-serif';
   border-style: none;
+  border-radius: 20px;
   padding-left: 20px;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.1));
 `
 export const InputPW = styled(InputID)`
 `
@@ -94,16 +101,26 @@ export const Select = styled.select`
   color: grey;
 `
 export const Button = styled.button`
-  width: 160px;
+  width: 70%;
   height: 56px;
-  color: white;
-  background-color:#18A0FB;
+  display:flex;
+  align-items: center;
+  background-color: white;
+  justify-content: center;
+  // font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  font-family: nanum-myeongjo, sans-serif;
+  font-size:1.125rem;
+  font-weight: 700;
+  cursor:pointer;
+  border-radius: 80px;
+  background: rgba(34, 34, 34, 0.5);
+  color:white;
+  &:hover{
+    background-color: #eee;
+    color:rgba(34, 34, 34, 0.5);
+  }
   border-style: none;
-  border-radius: 56px;
-  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.1));
 `
 export const Button1 = styled.div`
   width: 70%;
@@ -112,13 +129,19 @@ export const Button1 = styled.div`
   align-items: center;
   background-color: white;
   justify-content: center;
-  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  // font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  font-family: nanum-myeongjo, sans-serif;
   font-size:1.125rem;
   font-weight: 700;
+  cursor:pointer;
   border-radius: 80px;
   filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.1));
 `
 export const Button2= styled(Button1)`
   background: rgba(34, 34, 34, 0.5);
   color:white;
+  &:hover{
+    background-color: #eee;
+    color:rgba(34, 34, 34, 0.5);
+  }
 `

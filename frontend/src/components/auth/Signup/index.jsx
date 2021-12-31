@@ -53,7 +53,7 @@ function Signup() {
     return signup(signupInfo);
   };
   const goBack = () => {
-    // history.goBack();
+    history(-1);
   };
   return (
     <>
