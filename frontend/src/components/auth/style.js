@@ -36,9 +36,8 @@ export const Container = styled.div`
   margin: 0 auto;
   display:flex;
   justify-content: center;
-
   flex-direction: column;
-  background-color: #fff;
+
 `
 export const Circle = styled.div`
   width: 44px;
