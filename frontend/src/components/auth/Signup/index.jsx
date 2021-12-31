@@ -19,28 +19,41 @@ function Signup() {
       data: signupInfo,
       withCredentials: true,
     }).then((res) => {
-        setProfile(() => res.data.profile);
         setUser(() => "isLogin");
-        localStorage.setItem("ZakSimId", res.data.profile.pk);
-        history.push({
-          pathname: "/home",
+        localStorage.setItem("ZakSimId", res.data.key);
+        history({
+          pathname: "/",
         })
       })
       .catch((err) => {
-          if(err.response.status==409 && err.response.data.message=="id duplicate"){
-            alert("이미 사용 중인 아이디입니다.");
+        var key = Object.getOwnPropertyNames(err.response.data)
+        console.log(key)
+          if(err.response.status==400 && key=="username"){
+            // console.log(err.response.data)
+            // alert("이미 사용 중인 아이디입니다.");
             setError("이미 사용 중인 아이디입니다.")
+          }
+          if(err.response.status==400 && key=="non_field_errors"){
+
+            // && err.response.data.message=="id duplicate"
+            // alert("비밀번호가 일치하지 않습니다.");
+            setError("비밀번호가 일치하지 않습니다.")
+          }
+          if(err.response.status==400 && key=="password1"){
+            // && err.response.data.message=="id duplicate"
+            // alert("조금 더 복잡한 비밀번호를 설정해 주세요");
+            setError("조금 더 복잡한 비밀번호를 설정해 주세요")
           }
         });
     };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const signupInfo = { id: e.target.id.value, pwd: e.target.pwd.value };
+    const signupInfo = { username: e.target.id.value, password1: e.target.pwd1.value, password2: e.target.pwd2.value};
     return signup(signupInfo);
   };
   const goBack = () => {
-    history.goBack();
+    // history.goBack();
   };
   return (
     <>
@@ -66,8 +79,15 @@ function Signup() {
             <S.InputPW
               required
               type="password"
-              id="pwd"
-              name="pwd"
+              id="pwd1"
+              name="pwd1"
+              placeholder="비밀번호"
+            />
+            <S.InputPW
+              required
+              type="password"
+              id="pwd2"
+              name="pwd2"
               placeholder="비밀번호"
             />
           </S.InputWrapper>

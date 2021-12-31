@@ -26,7 +26,7 @@ const Container = styled.div`
 const Body = styled.div`
   max-width: 375px;
   margin: 0 auto;
-  background-color: white;
+  background-color: #FFE5AC;
   @media (min-width: 375px) {
     min-height: 100vh;
   }
