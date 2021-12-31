@@ -14,6 +14,7 @@ function Login() {
     axios({
       method: "post",
       url: "http://localhost:8000/accounts/rest-auth/login/",
+      // url: "/accounts/rest-auth/login/",
       data: loginInfo,
       withCredentials: true,
     })
@@ -61,12 +62,21 @@ function Login() {
           <S.InputWrapper>
             <S.InputIcon className="far fa-user" />
             <S.InputID
-              requiredtype="text"
+              required type="text"
               id="id"
               name="id"
               placeholder="아이디"
             />
           </S.InputWrapper>
+
+          {/* <S.InputWrapper>
+          <S.InputID
+              type="text"
+              id="email"
+              name="email"
+              placeholder="email"
+            />
+          </S.InputWrapper> */}
           <S.InputWrapper>
             <S.InputIcon className="fas fa-lock" />
             <S.InputPW

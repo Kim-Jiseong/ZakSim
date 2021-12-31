@@ -65,6 +65,7 @@ REST_FRAMEWORK = {
 }
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',     # cors
+    # 'backend.custom_cors_middleware.CustomCorsMiddleware', 
     'django.middleware.common.CommonMiddleware', # cors
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -74,6 +75,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+CORS_ALLOW_CREDENTIALS = True
+# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    # 'localhost:3000/'
+)
+
 
 ROOT_URLCONF = 'djangoreactapi.urls'
 
@@ -147,11 +156,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-    # 'localhost:3000/'
-)
+
 
 # DRF auth settings
 REST_FRAMEWORK = {
@@ -159,4 +164,3 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ]
 }
-CORS_ALLOW_CREDENTIALS = True
