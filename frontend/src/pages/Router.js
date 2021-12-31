@@ -1,44 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, Link, Redirect } from "react-router-dom";
-import { useUser } from "../hooks/useUser";
+import React from "react";
+import { Routes, Route, Navigate, Link } from "react-router-dom";
 import Login from "../components/auth/Login";
 import Signup from "../components/auth/Signup/index.jsx";
 import Splash from "../components/auth/Splash";
 import Home from "../components/board/index.jsx";
+import { useUser } from "../hooks/useUser";
 function Router() {
-    const { user } = useUser();
-  
+  const { user } = useUser();
+    // const isAuthorized = sessionStorage.getItem("isAuthorized");
     if (user !== "isLogin")
       return (
-        <BrowserRouter>
           <Routes>
             <Route path="/auth/signup"  element={<Signup/>}/>
             <Route path="/auth/login"  element={<Login/>}/>
             <Route path="/" element={<Splash/>}/>
           </Routes>
-        </BrowserRouter>
       );
   
     return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/">
-            <Home />
-          </Route>
-          {/* <Route exact path="/splash">
-            <Splash />
-          </Route> */}
-          <Route path="/home">
-            <Home />
-          </Route>
-          {/* <Route exact path="/:userId/:postPk">
-            <Detail />
-          </Route>
-          <Route exact path="/write">
-            <Write />
-          </Route> */}
-        </Routes>
-        </BrowserRouter>
+      <Routes>
+      <Route path="/auth/signup"  element={<Signup/>}/>
+      <Route path="/auth/login"  element={<Login/>}/>
+      <Route path="/" element={<Splash/>}/>
+    </Routes>
+        
   );
 }
 export default Router;

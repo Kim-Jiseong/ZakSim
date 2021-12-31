@@ -6,14 +6,6 @@ function Splash() {
   const location = useLocation();
   const history = useNavigate();
 
-  useEffect(() => {
-    if(location.pathname !== "/splash"){
-      history.push({
-        pathname: "/splash"
-      })
-    }
-  }, [])
-
   return(
     <>
       <div>

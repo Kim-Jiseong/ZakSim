@@ -10,8 +10,15 @@ function Login() {
   const [ user, setUser ] = useRecoilState(userState);
   const [ error, setError ] = useState();
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const loginInfo = { "username": e.target.id.value, "password": e.target.pwd.value };
+    // console.log(loginInfo)
+    return login(loginInfo);
+  };
   const login = async (loginInfo) => {
-    axios({
+    await axios({
       method: "post",
       url: "http://localhost:8000/accounts/rest-auth/login/",
       // url: "/accounts/rest-auth/login/",
@@ -19,36 +26,36 @@ function Login() {
       withCredentials: true,
     })
       .then((res) => {
-        localStorage.setItem("ZakSimId", res.data.profile.pk);
+        // sessionStorage.setItem("isAuthorized", "true");
+        console.log(res)
+        localStorage.setItem("ZakSimId", res.data.key);
         setUser("isLogin");
+        // console.log()
+        // localStorage.setItem("ZakSimId", res);
+        // setUser("isLogin");
       })
-      .catch((err) => {
-        if(err.response.status==401 && err.response.data=="Unauthorized"){
-          alert("아이디 혹은 패스워드가 잘못되었습니다.");
-          setError("아이디 혹은 패스워드가 잘못되었습니다.");
-        }
-        console.dir(err)
-        console.log(loginInfo)
-      });
+      // .catch((err) => {
+      //   if(err.response.status==401 && err.response.data=="Unauthorized"){
+      //     alert("아이디 혹은 패스워드가 잘못되었습니다.");
+      //     setError("아이디 혹은 패스워드가 잘못되었습니다.");
+      //   }
+      //   console.dir(err)
+      //   console.log(loginInfo)
+      // });
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const loginInfo = { "username": e.target.id.value, "password": e.target.pwd.value };
-    return login(loginInfo);
-  };
 
   const goBack = () => {
     history.goBack();
   };
 
-  // useEffect(() => {
-  //   if(user != "none"){
-  //     history({
-  //       pathname: "/"
-  //     })
-  //   }
-  // }, [user])
+  useEffect(() => {
+    if(user != "none"){
+      history({
+        pathname: "/"
+      })
+    }
+  }, [user])
 
   return (
     <>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GlobalStyle from "./components/GlobalStyle";
 import Router from "./pages/Router";
+import { BrowserRouter} from "react-router-dom";
 import 
 {
   RecoilRoot,
@@ -58,7 +59,9 @@ function App() {
             rel="stylesheet"
           />
           <RecoilRoot>
+          <BrowserRouter>
             <Router />
+          </BrowserRouter>
           </RecoilRoot>
         </GlobalStyle>
       </>
