@@ -1,18 +1,27 @@
 import { useEffect } from "react";
-import { useRecoilState } from "recoil";
-import { profileState, userState } from "../atoms/atoms";
-
+import { useRecoilState, useRecoilValue } from "recoil";
+import {  userName } from "../atoms/atoms";
+import axios from "axios";
 export const useUser = () => {
-  const profilePk = localStorage.getItem("ZakSimId");
-  const [user, setUser] = useRecoilState(userState);
+  const userToken = localStorage.getItem("ZakSimId");
+  const [username, setUsername] = useRecoilState(userName);
   useEffect(() => {
-    if (profilePk) {
-      setUser(() => "isLogin");
+    if (userToken) {
+      console.log("useuser토큰이요",userToken)
+       axios.get("http://localhost:8000/accounts/getpk/", {
+            headers: {
+                Authorization:`Token ${userToken}`
+            }
+        })
+      .then((res)=> {
+           console.log(res.data.pk)
+           setUsername(res.data.pk)
+        })
       return;
     }
 
-    setUser(() => "none");
+    setUsername(() => "none");
   }, []);
 
-  return { user, setUser };
+  return { username, setUsername };
 };

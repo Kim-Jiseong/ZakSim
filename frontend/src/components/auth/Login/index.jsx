@@ -7,9 +7,9 @@ import { userState } from "../../../atoms/atoms.js";
 import footerbg from "../../../assets/FooterBGsmall.svg"
 function Login() {
   const history = useNavigate();
-  const [ user, setUser ] = useRecoilState(userState);
+  const [ userStates, setUserStates ] = useRecoilState(userState);
   const [ error, setError ] = useState();
-
+  const userToken = localStorage.getItem("ZakSimId");
 
   const login = async (loginInfo) => {
     await axios({
@@ -23,10 +23,9 @@ function Login() {
         // sessionStorage.setItem("isAuthorized", "true");
         console.log(res)
         localStorage.setItem("ZakSimId", res.data.key);
-        setUser("isLogin");
         // console.log()
         // localStorage.setItem("ZakSimId", res);
-        // setUser("isLogin");
+        setUserStates(res.data.key);
       })
       .catch((err) => {
         if(err.response.status==401 && err.response.data=="Unauthorized"){
@@ -49,12 +48,13 @@ function Login() {
   };
 
   useEffect(() => {
-    if(user != "none"){
+    // if(userStates != "none"){
+    if(userToken){
       history({
         pathname: "/main"
       })
     }
-  }, [user])
+  }, [userStates])
 
   return (
     <>

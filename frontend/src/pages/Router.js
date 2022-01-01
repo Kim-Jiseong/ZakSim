@@ -6,17 +6,20 @@ import Splash from "../components/auth/Splash";
 import Home from "../components/board/index.jsx";
 import Detail from "../components/board/detail/index";
 import Write from "../components/board/write/index";
-import { useUser } from "../hooks/useUser";
+import { useRecoilState , useRecoilValue } from "recoil";
+// import { useUser } from "../hooks/useUser";
+import { userState } from "../atoms/atoms";
 function Router() {
-  const { user } = useUser();
+  const userToken = localStorage.getItem("ZakSimId");
+  const  userStates  = useRecoilValue(userState)
     // const isAuthorized = sessionStorage.getItem("isAuthorized");
-    if (user !== "isLogin")
+    if (!userToken)
       return (
           <Routes>
             <Route path="/auth/signup"  element={<Signup/>}/>
             <Route path="/auth/login"  element={<Login/>}/>
             <Route path="/" element={<Splash/>}/>
-            <Route path="/main" element={<Home/>}/>
+            {/* <Route path="/main" element={<Home/>}/> */}
           </Routes>
       );
   

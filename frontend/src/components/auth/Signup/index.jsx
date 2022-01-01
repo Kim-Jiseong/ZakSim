@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styled, { css } from "styled-components";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { profileState, userState } from "../../../atoms/atoms.js";
+import { userState } from "../../../atoms/atoms.js";
 import * as S from "../style.js";
 
 function Signup() {
   const history = useNavigate();
-  const [profile, setProfile] = useRecoilState(profileState);
-  const setUser = useSetRecoilState(userState);
+  const [ userStates, setUserStates ] = useRecoilState(userState);
+  // const setUser = useSetRecoilState(userState);
   const [error, setError] = useState();
 
   const signup = async (signupInfo) => {
@@ -19,7 +19,7 @@ function Signup() {
       data: signupInfo,
       withCredentials: true,
     }).then((res) => {
-        setUser(() => "isLogin");
+        setUserStates(() => "isLogin");
         localStorage.setItem("ZakSimId", res.data.key);
         history({
           pathname: "/main",
