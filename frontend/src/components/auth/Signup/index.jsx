@@ -15,14 +15,14 @@ function Signup() {
   const signup = async (signupInfo) => {
     axios({
       method: "post",
-      url: "http://localhost:8000/accounts/rest-auth/signup/",
+      url: " http://localhost:8000/accounts/signup/",
       data: signupInfo,
       withCredentials: true,
     }).then((res) => {
         setUser(() => "isLogin");
         localStorage.setItem("ZakSimId", res.data.key);
         history({
-          pathname: "/",
+          pathname: "/main",
         })
       })
       .catch((err) => {
@@ -49,7 +49,7 @@ function Signup() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const signupInfo = { username: e.target.id.value, password1: e.target.pwd1.value, password2: e.target.pwd2.value};
+    const signupInfo = { nickname: e.target.name.value, id: e.target.id.value, password1: e.target.pwd1.value, password2: e.target.pwd2.value};
     return signup(signupInfo);
   };
   const goBack = () => {
@@ -64,6 +64,16 @@ function Signup() {
 
         <S.Title>회원가입 시작</S.Title>
         <form onSubmit={onSubmit}>
+          <S.InputWrapper>
+            <S.InputIcon className="far fa-user" />
+            <S.InputID
+              required
+              type="text"
+              id="name"
+              name="name"
+              placeholder="이름"
+            />
+          </S.InputWrapper>
           <S.InputWrapper>
             <S.InputIcon className="far fa-user" />
             <S.InputID

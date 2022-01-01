@@ -10,14 +10,18 @@ function Board() {
     const history = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
     // const user = useRecoilValue(profileState);
+    const userToken = localStorage.getItem("ZakSimId");
     // console.log(user)
-    // const getUser = async () =>  {
-    // await axios.get(`http://localhost:8000/accounts`)
-    //   .then((res)=> {
-    //        console.log(res.data)
-    //        setPosts(res.data);
-    //     })
-    // }
+    const getUser = async (userToken) =>  {
+    await axios.get("http://localhost:8000/accounts/getpk/", {
+            headers: {
+                Authorization: `${userToken}`
+            }
+        })
+      .then((res)=> {
+           console.log(res.data.pk)
+        })
+    }
     const getPosts = async () =>  {
     await axios.get(`http://localhost:8000/api`)
       .then((res)=> {
@@ -88,6 +92,8 @@ function Board() {
             })}
     </S.DesignContainer>
         <S.YB/>
+
+    <S.Button onClick={getUser}>받아오기</S.Button>
         {/*
         <S.FixedAlign>
         <S.PlusButton onClick={() => history.push({
