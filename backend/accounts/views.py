@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.models import User
 from . import models
+from .models import Profile
 
 # Create your views here.
 class SignupView(APIView):
@@ -31,5 +32,5 @@ class SignupView(APIView):
 class GetPKbyToken(APIView):
     def get(self, request, format=None):
         print(request.user)
-        
-        return Response({"pk": str(request.user)})
+        userProfile = models.Profile.objects.get(user=request.user)
+        return Response({"username": str(request.user),"pk": request.user.id, "nickname":userProfile.nickname})
