@@ -118,6 +118,7 @@ export const Button = styled.button`
   &:hover{
     background-color: #eee;
     color:rgba(34, 34, 34, 0.5);
+    transition: all ease 0.5s;
   }
   border-style: none;
   filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.1));
@@ -142,6 +143,7 @@ export const Button2= styled(Button1)`
   color:white;
   &:hover{
     background-color: #eee;
+    transition: all ease 0.5s;
     color:rgba(34, 34, 34, 0.5);
   }
 `

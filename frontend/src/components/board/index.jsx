@@ -13,24 +13,7 @@ function Board() {
     const userStates = useRecoilValue(userState);
     const userToken = localStorage.getItem("ZakSimId");
     const { username, setUsername } = useUser()
-    // const [user, setUser] = useState();
-    // const userToken = () => {
-    //     setUser(localStorage.getItem("ZakSimId"));
-    //     return getUser(user)
-    // } 
-    // // console.log(user)
-    // const getUser = async () =>  {
-    //     console.log("토큰이요",user)
-    // await axios.get("http://localhost:8000/accounts/getpk/", {
-    //         headers: {
-    //             Authorization:`Token ${user}`
-    //         }
-    //     })
-    //   .then((res)=> {
-    //        console.log(res.data.pk)
-    //        setUsername(res.data.pk)
-    //     })
-    // }
+
     const getAllPosts = async () =>  {
     await axios.get(`http://localhost:8000/api`)
       .then((res)=> {
@@ -44,49 +27,12 @@ function Board() {
     }, []);
     useEffect(() => {
         console.log(userToken)
-        // if(userStates == "none"){
-        // if (allPosts){
-        //     allPosts.map((x) => {
-        //         if( x.author == username){
-
-        //         }
-        //     })
-        // }
         if(!userToken){
           history({
             pathname: "/"
           })
         }
       }, [userToken])
-//     const titleWrapper = {
-//         display: 'flex',
-//         justifyContent: 'space-between',
-//         alignItems: 'center',
-//         padding: '28px',
-//     }
-//     function timeForToday(value) {
-//         const today = new Date();
-//         const timeValue = new Date(value);
-
-//         const betweenTime = Math.floor((today.getTime() - timeValue.getTime()) / 1000 / 60);
-//         if (betweenTime < 1) return '방금전';
-//         if (betweenTime < 60) {
-//             return `${betweenTime}분전`;
-//         }
-
-//         const betweenTimeHour = Math.floor(betweenTime / 60);
-//         if (betweenTimeHour < 24) {
-//             return `${betweenTimeHour}시간전`;
-//         }
-
-//         const betweenTimeDay = Math.floor(betweenTime / 60 / 24);
-//         if (betweenTimeDay < 365) {
-//             return `${betweenTimeDay}일전`;
-//         }
-
-//         return `${Math.floor(betweenTimeDay / 365)}년전`;
-//     }
-    
     if(isLoading){
         return <div>로딩중...</div>
     }
@@ -94,14 +40,14 @@ function Board() {
     return (
     <>
         <div>
-            <S.Title>{username}</S.Title>
+            <S.Title>{username}님의 목표</S.Title>
             <div style={{fontSize: "0.875rem",color: '#A7B0C0', }}></div>
     </div>
     <S.DesignContainer>
         <div>{allPosts.content}</div>
             { allPosts && allPosts.map(data => {
                 console.log(data.author)
-                if (data.author == username){
+                // if (data.author == username){
                     
                 return (
                 <div style={{ width:"88%" ,margin: "0 auto",display:"flex",justifyContent:"center",flexDirection: "column"}}>
@@ -116,9 +62,10 @@ function Board() {
                     </div>
                 </S.PostWrapper>
                 </div>
-                )};
+                );
             })}
     </S.DesignContainer>
+    <S.FixedAlign><S.PlusButton><i className="fas fa-plus"></i></S.PlusButton></S.FixedAlign>
         <S.YB/>
         {/*
         <S.FixedAlign>

@@ -1,18 +1,17 @@
 import styled, { css } from "styled-components";
 export const Title = styled.div`
-  font-family: "Spoqa Hans Sans Neo";
+  font-family: nanum-myeongjo, sans-serif;
   font-size: 27px;
   font-weight: 700;
   color: #12121D;
 `
 export const PlusButton = styled.div`
-
-
+  color:white;
   width: 60px;
   height: 60px;
   display: flex;
   border-radius: 60px;
-  background:#f9f9f9;
+  background:#8E806A;
   align-items: center;
   cursor: pointer;
   justify-content: center;
@@ -20,9 +19,15 @@ export const PlusButton = styled.div`
   margin-right: 40px;
   pointer-events: all;
   box-shadow: 2px 2px 3px #999;
+  transition: all ease 1s;
   &:hover {
-    color:white;
-    background: #18A0FB;
+    color:#8E806A;
+    background: #eee;
+    & i {
+      transform: rotate( 360deg );
+      transition: all ease 1s;
+      // color:red;
+    }
   }
 `;
 export const FixedAlign = styled.div`
@@ -34,7 +39,7 @@ export const FixedAlign = styled.div`
   margin: 0 auto;
   position: fixed;
   bottom: 100px;
-  justify-content: flex-end;
+  justify-content: center;
   pointer-events: none;
 }
 `
