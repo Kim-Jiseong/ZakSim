@@ -14,7 +14,7 @@ export const InputIcon = styled.i`
 
 `
 export const YB = styled.div`
-  height: 200px
+  height: 10vh;
 `
 export const Title = styled.p`
   margin-bottom: 50px;

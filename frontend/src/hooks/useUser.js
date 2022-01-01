@@ -14,8 +14,8 @@ export const useUser = () => {
             }
         })
       .then((res)=> {
-           console.log(res.data.pk)
-           setUsername(res.data.pk)
+           console.log(res.data)
+           setUsername(res.data.nickname)
         })
       return;
     }
