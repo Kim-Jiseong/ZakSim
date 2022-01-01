@@ -154,7 +154,11 @@ export const PostWrapper= styled.div`
   padding-left: 10px;
   cursor:pointer;
   padding-right: 10px;
-  border-bottom: 1px solid #D9D9D9
+  border-radius: 8px;
+  border-bottom: 1px solid #D9D9D9;
+  &:hover{
+    background-color: #eee;
+  }
 `
 export const PostTitle= styled.div`
  font-family: Spoqa Hans Sans Neo;
