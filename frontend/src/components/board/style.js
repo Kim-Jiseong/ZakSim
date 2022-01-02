@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
 export const Title = styled.div`
-  font-family: nanum-myeongjo, sans-serif;
+  font-family: 'Spoqa Hans Sans Neo',sans-serif;
   font-size: 1.6rem;
   font-weight: 700;
   color: #12121D;
@@ -15,9 +15,6 @@ export const InputIcon = styled.i`
   font-size:1.5rem;
   margin-right: 4px;
 
-`
-export const YB = styled.div`
-  height: calc(10vh + 1.875rem);
 `
 
 export const SubTitle = styled.div`
@@ -59,7 +56,7 @@ export const Button = styled.button`
   width: 160px;
   height: 56px;
   color: white;
-  background-color:#18A0FB;
+  background-color:#8E806A;
   border-style: none;
   border-radius: 56px;
   font-family: 'Spoqa Han Sans Neo', 'sans-serif';
@@ -67,8 +64,8 @@ export const Button = styled.button`
   cursor: pointer;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   &:hover {
-    background:White;
-    color:#18A0FB;
+    background:#eee;
+    color:#8E806A;
   }
 `
 export const Button1 = styled.div`
@@ -183,7 +180,9 @@ export const DesignContainer= styled.div`
   border-radius:30px;
   filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.1));
 `;
-
+export const YB = styled.div`
+  height: calc(10vh + 1.875rem);
+`
 export const PlusButton = styled.div`
 color:white;
 width: 3.75rem;
@@ -262,14 +261,19 @@ export const InsertForm = styled.form`
   background: #f8f9fa;
   width:100%;
   min-height: 200px;
+  padding-top:  2rem;
   height: 50vh;
   margin:0 auto;
   max-width: 375px;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   border-top: 1px solid #e9ecef;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: center;
   // transition: all ease 1s;
-  animation-duration: 1s;
+  animation-duration: 0.8s;
   animation-name: ${({ open }) => open && slideUp};
 `;
  
@@ -281,6 +285,7 @@ export const Input = styled.input`
   outline: none;
   font-size: 18px;
   box-sizing: border-box;
+  margin-bottom: 10px;
 `;
  
 export const ModalBG = styled.div`
