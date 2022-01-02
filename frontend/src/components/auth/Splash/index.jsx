@@ -30,7 +30,7 @@ function Splash() {
   return(
     <>
       <T.Container>
-          <img style={{width: "30%", marginTop:"12vh", marginBottom:"12vh"}}src={title}/>
+          <S.TitleImg style={{width: "30%", marginTop:"12vh", marginBottom:"12vh"}}src={title}/>
 
           <Link  style={{color: 'inherit', textDecoration: 'none' }} to="auth/login"><S.Button2 style={{width: '270px'}}>시작하기</S.Button2></Link>
 

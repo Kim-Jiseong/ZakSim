@@ -68,25 +68,38 @@ function Board() {
             <div style={{fontSize: "0.875rem",color: '#A7B0C0', }}></div>
     </div>
     <S.DesignContainer>
-        <div>{allPosts.content}</div>
             { allPosts && allPosts.map(data => {
-                console.log(data.author)
-                if (data.author == username.pk){
-                    
+                console.log(data.success)
+                if (data.author == username.pk && data.success){
                 return (
+                    <S.SuccessWrapper>
                 <div style={{ width:"88%" ,margin: "0 auto",display:"flex",justifyContent:"center",flexDirection: "column"}}>
                 <S.PostWrapper 
                 // onClick={() => history({pathname: `/board/${courseId}/${data.pk}`,})}
                 >
                     <S.PostTitle>{data.title}</S.PostTitle>
                     <S.PostContent>{data.content}</S.PostContent>
-                    {/* <S.PostContent>{data.success}</S.PostContent> */}
+                    
+                    {/* {data.success && <div>성공</div>} */}
                     <div style={{width:"88%" ,margin: "0 auto",display:"flex",justifyContent:"space-between",}}>
                         <S.PostTime>{data.created_at}</S.PostTime>
                     </div>
                 </S.PostWrapper>
                 </div>
-                )};
+                <div><i className="fas fa-check-circle"></i></div>
+                </S.SuccessWrapper>
+                )}
+                return(<div style={{ width:"88%" ,margin: "0 auto",display:"flex",justifyContent:"center",flexDirection: "column"}}>
+                <S.PostWrapper 
+                // onClick={() => history({pathname: `/board/${courseId}/${data.pk}`,})}
+                >
+                    <S.PostTitle>{data.title}</S.PostTitle>
+                    <S.PostContent>{data.content}</S.PostContent>
+                    <div style={{width:"88%" ,margin: "0 auto",display:"flex",justifyContent:"space-between",}}>
+                        <S.PostTime>{data.created_at}</S.PostTime>
+                    </div>
+                </S.PostWrapper>
+                </div>);
             })}
     </S.DesignContainer>
     {open && (

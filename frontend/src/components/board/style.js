@@ -294,3 +294,8 @@ export const ModalBG = styled.div`
   background: rgba(0, 0, 0, 0.6);
 `;
  
+export const SuccessWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+ 

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes} from "styled-components";
 
 export const BG = styled.div`
   width: 100%;
@@ -62,7 +62,6 @@ export const InputWrapper = styled.div`
   align-items: center;
   margin-bottom: 1rem;
 `
-
 
 export const ButtonWrapper = styled.div`
   width: 100%;
@@ -146,4 +145,27 @@ export const Button2= styled(Button1)`
     transition: all ease 0.5s;
     color:rgba(34, 34, 34, 0.5);
   }
+`
+const slideUp = keyframes`
+    0% {
+      opacity: 0;
+      transform: translateY(20%);
+    }
+    15% {
+      opacity: 0;
+    }
+    100%{
+      opacity: 1;
+      transform: translateY(0);
+    }
+  `;
+
+export const TitleImg= styled.img`
+  animation-duration: 2s;
+  animation-name: ${slideUp};
+  // transition: all ease 1s;
+  // transform:  ;
+  width: 30%;
+  margin-top:12vh;
+  margin-bottom:12vh;
 `
