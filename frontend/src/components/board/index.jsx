@@ -5,15 +5,17 @@ import * as S from "./style";
 import { useRecoilState , useRecoilValue } from "recoil";
 import { userState } from "../../atoms/atoms.js";
 import {useUser} from "../../hooks/useUser";
+import Main from "./pages/main"
+import Finished from "./pages/finished"
 function Board() {
     const [allPosts, setAllPosts] = useState();
-    const [posts, setPosts] = useState();
     const history = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
     const userStates = useRecoilValue(userState);
     const userToken = localStorage.getItem("ZakSimId");
     const { username, setUsername } = useUser()
     const [open, setOpen] = useState(false);
+    const [headState, setHeadState] = useState("main");
  
     const onToggle = () => setOpen(!open);
     const getAllPosts = async () =>  {
@@ -63,45 +65,32 @@ function Board() {
           })}
     return (
     <>
-        <div>
-            <S.Title>{username.nickname}님의 목표</S.Title>
-            <div style={{fontSize: "0.875rem",color: '#A7B0C0', }}></div>
-    </div>
-    <S.DesignContainer>
-            { allPosts && allPosts.map(data => {
-                console.log(data.success)
-                if (data.author == username.pk && data.success){
-                return (
-                    <S.SuccessWrapper>
-                <div style={{ width:"88%" ,margin: "0 auto",display:"flex",justifyContent:"center",flexDirection: "column"}}>
-                <S.PostWrapper 
-                // onClick={() => history({pathname: `/board/${courseId}/${data.pk}`,})}
-                >
-                    <S.PostTitle>{data.title}</S.PostTitle>
-                    <S.PostContent>{data.content}</S.PostContent>
-                    
-                    {/* {data.success && <div>성공</div>} */}
-                    <div style={{width:"88%" ,margin: "0 auto",display:"flex",justifyContent:"space-between",}}>
-                        <S.PostTime>{data.created_at}</S.PostTime>
-                    </div>
-                </S.PostWrapper>
-                </div>
-                <div><i className="fas fa-check-circle"></i></div>
-                </S.SuccessWrapper>
-                )}
-                return(<div style={{ width:"88%" ,margin: "0 auto",display:"flex",justifyContent:"center",flexDirection: "column"}}>
-                <S.PostWrapper 
-                // onClick={() => history({pathname: `/board/${courseId}/${data.pk}`,})}
-                >
-                    <S.PostTitle>{data.title}</S.PostTitle>
-                    <S.PostContent>{data.content}</S.PostContent>
-                    <div style={{width:"88%" ,margin: "0 auto",display:"flex",justifyContent:"space-between",}}>
-                        <S.PostTime>{data.created_at}</S.PostTime>
-                    </div>
-                </S.PostWrapper>
-                </div>);
-            })}
-    </S.DesignContainer>
+    <S.Positioner>
+            <S.Background>
+                <S.Title>{username.nickname}님의 목표</S.Title>
+                <S.ElementWrapper>
+                    <S.Element onClick={() =>setHeadState("main")}>목표</S.Element>
+                    <S.Element onClick={() =>setHeadState("finished")}>성공한 목표</S.Element>
+                </S.ElementWrapper>
+            </S.Background>
+    </S.Positioner>
+            {/* <S.Title>{username.nickname}님의 목표</S.Title> */}
+    <S.YB/>
+    {/* {headState(status =>{
+        if (status=="main"){
+            return(
+                <Main allPosts={allPosts}></Main>
+            )
+        }
+        return (
+            <Finished allPosts={allPosts}></Finished>
+        )
+    })} */}
+    {(headState == "main") && <Main allPosts={allPosts}></Main>}
+    {(headState == "finished") && <Finished allPosts={allPosts}></Finished>}
+                
+                
+
     {open && (
         <S.ModalBG>
         <S.InsertFormPositioner>

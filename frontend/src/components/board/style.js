@@ -221,6 +221,7 @@ ${props =>
 `;
 export const FixedAlign = styled.div`
   width: 100%;
+  z-index:10;
   max-width: 375px;
   // height: 60px;
   display: flex;
@@ -292,10 +293,40 @@ export const ModalBG = styled.div`
   position: fixed;
   top:0; left: 0; bottom: 0; right: 0;
   background: rgba(0, 0, 0, 0.6);
+  z-index:2;
 `;
  
 export const SuccessWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
- 
+export const Positioner = styled.div`
+display: flex;
+flex-direction: column;
+position: fixed;
+z-index: 1;
+top: 0px;
+width: 100%;
+
+`;
+export const Background = styled.div`
+display: flex;
+flex-direction: column;
+width: 100%;
+max-width: 375px;
+background-color: #fff;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+`;
+export const ElementWrapper = styled.div`
+display: flex;
+width: 100%;
+max-width: 375px;
+`;
+export const Element = styled.div`
+width:50%;
+text-align:center;
+cursor:pointer;
+&:hover{
+    background-color: #eee;
+}
+`;

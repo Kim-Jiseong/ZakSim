@@ -32,7 +32,7 @@ function Splash() {
       <T.Container>
           <S.TitleImg style={{width: "30%", marginTop:"12vh", marginBottom:"12vh"}}src={title}/>
 
-          <Link  style={{color: 'inherit', textDecoration: 'none' }} to="auth/login"><S.Button2 style={{width: '270px'}}>시작하기</S.Button2></Link>
+          <Link  style={{color: 'inherit', textDecoration: 'none' }} to="auth/login"><T.Button2 style={{width: '16.875rem'}}>시작하기</T.Button2></Link>
 
           {/* <Link  style={{color: 'inherit', textDecoration: 'none' }} to="auth/signup"><S.Button2 style={{width: '270px'}}>회원가입</S.Button2></Link> */}
           
