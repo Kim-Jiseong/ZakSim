@@ -11,7 +11,7 @@ class SignupView(APIView):
     def post(self, request):
         if not request.data['id']:  #ID 필드 공백일시
             return Response({"error": "ID is empty"})
-        if not request.data['password1'] or not request.data['password2']:  #ID 필드 공백일시
+        if not request.data['password1'] or not request.data['password2']:  #PW 필드 공백일시
             return Response({"error": "password is empty"})
         if not request.data['nickname']:  #닉네임 필드 공백일시
             return Response({"error": "Nickname is empty"})            
