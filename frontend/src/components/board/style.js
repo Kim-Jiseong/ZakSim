@@ -1,57 +1,23 @@
-import styled, { css } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 export const Title = styled.div`
   font-family: nanum-myeongjo, sans-serif;
-  font-size: 27px;
+  font-size: 1.6rem;
   font-weight: 700;
   color: #12121D;
+  margin-bottom: 20px;
+  padding-top:20px;
+  // margin-right: 6%;
+  // text-align: right;
+  margin-left: 6%;
+  text-align: left;
 `
-export const PlusButton = styled.div`
-  color:white;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  border-radius: 60px;
-  background:#8E806A;
-  align-items: center;
-  cursor: pointer;
-  justify-content: center;
-  font-size: 24px;
-  margin-right: 40px;
-  pointer-events: all;
-  box-shadow: 2px 2px 3px #999;
-  transition: all ease 1s;
-  &:hover {
-    color:#8E806A;
-    background: #eee;
-    & i {
-      transform: rotate( 360deg );
-      transition: all ease 1s;
-      // color:red;
-    }
-  }
-`;
-export const FixedAlign = styled.div`
-  width: 100%;
-  max-width: 375px;
-  // height: 60px;
-  display: flex;
-  position: fixed;
-  margin: 0 auto;
-  position: fixed;
-  bottom: 100px;
-  justify-content: center;
-  pointer-events: none;
-}
-`
-
-
 export const InputIcon = styled.i`
   font-size:1.5rem;
   margin-right: 4px;
 
 `
 export const YB = styled.div`
-  height: 100px
+  height: calc(10vh + 1.875rem);
 `
 
 export const SubTitle = styled.div`
@@ -64,27 +30,7 @@ export const SubTitle = styled.div`
   margin-bottom: 1rem;
   color:#404D61
 `
-export const Container = styled.div`
-  width: 100%;
-  max-width: 375px;
-  padding: 0 30px 0 30px;
-  margin: 0 auto;
-  display:flex;
-  justify-content: center;
-  flex-direction: column;
-  background-color: #fff;
-`
-export const Circle = styled.div`
-  width: 44px;
-  height: 44px;
-  margin-top: 10px;
-  // background-color: #eee;
-  display:flex;
-  cursor:pointer;
-  align-items: center;
-  justify-content: center;
-  border-radius: 40px;
-`
+
 export const InputWrapper = styled.div`
   width: 100%;
   height: 56px;
@@ -109,14 +55,6 @@ export const ButtonWrapper = styled.div`
   justify-content: center;
 `
 
-export const Input = styled.input`
-  width: 100%;
-  line-height: 40px;
-  border: 1px solid #E1E3E6;
-  box-sizing: border-box;
-  border-radius: 8px;
-  font-family: "Spoqa Hans Sans Neo";
-`
 export const Button = styled.button`
   width: 160px;
   height: 56px;
@@ -245,3 +183,109 @@ export const DesignContainer= styled.div`
   border-radius:30px;
   filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1)) drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.1));
 `;
+
+export const PlusButton = styled.div`
+color:white;
+width: 3.75rem;
+height: 3.75rem;
+display: flex;
+border-radius: 60px;
+background:#8E806A;
+align-items: center;
+cursor: pointer;
+justify-content: center;
+font-size: 1.5rem;
+pointer-events: all;
+box-shadow: 2px 2px 3px #999;
+transition: all ease 1s;
+&:hover {
+  color:#8E806A;
+  background: #eee;
+  & i {
+    transform: rotate( 360deg );
+    transition: all ease 1s;
+    // color:red;
+  }
+}
+${props =>
+    props.open &&
+    css`
+      background: #ff6b6b;
+      &:hover {
+        background: #ff8787;
+      }
+      &:active {
+        background: #fa5252;
+      }
+      transform:  translate(-0%, 50%) rotate(45deg);
+    `}
+`;
+export const FixedAlign = styled.div`
+  width: 100%;
+  max-width: 375px;
+  // height: 60px;
+  display: flex;
+  position: fixed;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 10vh;
+  justify-content: center;
+  pointer-events: none;
+  transition: all ease 1s;
+  ${props =>
+    props.open &&
+    css`
+      bottom:50vh;
+    `}
+}
+`
+export const InsertFormPositioner = styled.div`
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+`;
+const slideUp = keyframes`
+    0% {
+      opacity: 0;
+      transform: translateY(65%);
+    }
+    15% {
+      opacity: 0;
+    }
+    100%{
+      opacity: 1;
+      transform: translateY(0);
+    }
+  `;
+export const InsertForm = styled.form`
+  background: #f8f9fa;
+  width:100%;
+  min-height: 200px;
+  height: 50vh;
+  margin:0 auto;
+  max-width: 375px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-top: 1px solid #e9ecef;
+  // transition: all ease 1s;
+  animation-duration: 1s;
+  animation-name: ${({ open }) => open && slideUp};
+`;
+ 
+export const Input = styled.input`
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+  width: 100%;
+  outline: none;
+  font-size: 18px;
+  box-sizing: border-box;
+`;
+ 
+export const ModalBG = styled.div`
+  position: fixed;
+  top:0; left: 0; bottom: 0; right: 0;
+  background: rgba(0, 0, 0, 0.6);
+`;
+ 

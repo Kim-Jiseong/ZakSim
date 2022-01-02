@@ -7,7 +7,7 @@ export const useUser = () => {
   const [username, setUsername] = useRecoilState(userName);
   useEffect(() => {
     if (userToken) {
-      console.log("useuser토큰이요",userToken)
+      console.log("useuser토큰",userToken)
        axios.get("http://localhost:8000/accounts/getpk/", {
             headers: {
                 Authorization:`Token ${userToken}`
@@ -15,7 +15,7 @@ export const useUser = () => {
         })
       .then((res)=> {
            console.log(res.data)
-           setUsername(res.data.nickname)
+           setUsername(res.data)
         })
       return;
     }
